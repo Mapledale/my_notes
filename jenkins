@@ -1,0 +1,26 @@
+# PSM40-PM [MPO_Loss_Monitor]
+. /home/user/.virtualenvs/rfw/bin/activate
+pybot --loglevel DEBUG --outputdir /home/user/host/rfw_out --test tmp /home/user/host/rfw_code/mROADM/tcli/PSM40-PM.robot
+pybot --loglevel DEBUG --outputdir /home/user/host/rfw_out --test test-il /var/lib/jenkins/workspace/MPO_Loss_Monitor/test.robot
+
+
+# PSM40-FM-OM-R-TCA [PSM40-FM-OM-N-TCA | PSM40-FM-OM-C-TCA]
+. /home/user/.virtualenvs/rfw/bin/activate
+python -m robot.run --outputdir /home/user/host/rfw_out --argumentfile /home/user/host/jenkins_jobs/PSM40-FM-OM-R-TCA/argfile.txt /home/user/host/rfw_code/mROADM/tcli/PSM40-FM.robot
+
+
+# PSM40-FM-OM-R-LOS [PSM40-FM-OM-N-LOS | PSM40-FM-OM-C-LOS]
+. /home/user/.virtualenvs/rfw/bin/activate
+pybot --outputdir /home/user/host/rfw_out --argumentfile /home/user/host/jenkins_jobs/PSM40-FM-OM-R-LOS/argfile.txt /home/user/host/rfw_code/mROADM/tcli/PSM40-FM.robot
+
+
+# argfile.txt
+-C
+off
+-W
+98
+--suite
+PSM40-FM
+--test
+# PSM40-FM.LOS-OM-C
+PSM40-FM.TCA-OM-C-OP?
