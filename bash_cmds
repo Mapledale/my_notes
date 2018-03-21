@@ -10,3 +10,5 @@ du -shc ./*
 sort -hr
 
 find
+2>&1  # To capture stderr in your output
+touch
