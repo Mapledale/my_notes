@@ -4,3 +4,6 @@ grep
 
 netstat -hlpt
 nohup
+
+df -h
+du -shc ./*
