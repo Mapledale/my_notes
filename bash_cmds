@@ -8,3 +8,5 @@ nohup
 df -h
 du -shc ./*
 sort -hr
+
+find
