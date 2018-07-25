@@ -1,0 +1,10 @@
+# to get url of repo
+git config --get remote.origin.url
+
+# to get the full info on remote.origin
+git remote show origin
+# or use this:
+git remote get-url origin
+
+# to move repo to a new url:
+git remote set-url origin <newurl>
