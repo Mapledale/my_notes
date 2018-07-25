@@ -1,6 +1,10 @@
 awk
 sed
-grep
+
+# to find a string
+# -r: recursively
+# -l: show line #
+grep -rl <string to find> <path>
 
 netstat -hlpt
 nohup
