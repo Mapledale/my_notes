@@ -1,0 +1,52 @@
+# to import a module DYNAMICALLY
+# for a module file ./libs/my_module.py
+# which has def func1():
+from importlib import import_module
+
+mod_name = 'libs.my_module'
+func_name = 'func1'
+m = import_module(mod_name)
+f = getattr(m, func_name)
+
+
+# to get config DYNAMICALLY
+# from config.ini
+# which is like this:
+'''
+[default]
+temp_dir=./txt/temp
+min_size=2500
+wait_interval=0.2
+clean_temp=0
+
+[yooread]
+min_size=0
+'''
+try:                 # ver 3.x
+  from configparser import ConfigParser
+except ImportError:  # ver 2.x
+  from ConfigParser import ConfigParser
+
+cparser = ConfigParser()
+cparser.read('config.ini')
+domain = 'yooread'
+try:
+  temp_dir = cparser.get(domain, 'temp_dir')
+except:
+  temp_dir = cparser.get('default', 'temp_dir')
+
+try:
+  min_size = cparser.getint(domain, 'min_size')
+except:
+  min_size = cparser.getint('default', 'min_size')
+
+try:
+  wait_interval = cparser.getfloat(domain, 'wait_interval')
+except:
+  wait_interval = cparser.getfloat('default', 'wait_interval')
+
+try:
+  clean_temp = cparser.getboolean(domain, 'clean_temp')
+except:
+  clean_temp = cparser.getboolean('default', 'clean_temp')
+
